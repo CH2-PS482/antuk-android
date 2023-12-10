@@ -1,6 +1,11 @@
 <resources>
     <string name="app_name">Antuk</string>
 
+    <!--Onboarding Screen-->
+    <string name="welcome_to">Welcome To</string>
+    <string name="get_started">Let\'s get Started</string>
+    <string name="antuk_desc">Drive Safely without afraid to getting drowsy while on the road</string>
+
     <!--Login Screen-->
     <string name="log_in">Log In</string>
     <string name="log_in_desc">Log In now to have full experience in <b>Antuk!</b></string>
@@ -11,4 +16,7 @@
     <string name="show_password">Show Password</string>
     <string name="hide_password">Hide Password</string>
     <string name="forgot_password">Forgot Password</string>
+
+    <!--Register Screen-->
+    <string name="create_account">Create Account</string>
 </resources>
