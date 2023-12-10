@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Antuk</string>
+
+    <!--Login Screen-->
+    <string name="log_in">Log In</string>
+    <string name="log_in_desc">Log In now to have full experience in <b>Antuk!</b></string>
+    <string name="phone_number">Phone Number</string>
+    <string name="phone_number_placeholder">Your Phone Number</string>
+    <string name="password">Password</string>
+    <string name="password_placeholder">Your Password</string>
+    <string name="show_password">Show Password</string>
+    <string name="hide_password">Hide Password</string>
+    <string name="forgot_password">Forgot Password</string>
+</resources>
