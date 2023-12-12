@@ -1,8 +1,9 @@
-package com.antukcapstone.antuk.ui.screens.onboarding
+package com.antukcapstone.antuk.ui.screens.account.password
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -14,22 +15,27 @@ import androidx.compose.foundation.layout.requiredSize
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Surface
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.Font
+import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.antukcapstone.antuk.R
 import com.antukcapstone.antuk.ui.components.ButtonPrimary
-import com.antukcapstone.antuk.ui.components.ButtonSecondary
-import com.antukcapstone.antuk.ui.components.Headlines
-import com.antukcapstone.antuk.ui.components.SmallHeadlines
 import com.antukcapstone.antuk.ui.theme.AntukTheme
 
 @Composable
-fun OnBoardingScreen() {
+fun PasswordChanged() {
     Surface(
         modifier = Modifier
             .fillMaxSize()
@@ -48,45 +54,63 @@ fun OnBoardingScreen() {
                 horizontalArrangement = Arrangement.Center
             ) {
                 Image(
-                    painter = painterResource(R.drawable.hedgehog_sleep) ,
+                    painter = painterResource(R.drawable.hedgehog_sleep),
                     contentDescription = "Hedgehog Graphic",
                     modifier = Modifier
                         .requiredSize(160.dp)
                 )
             }
-            
-            Spacer(modifier = Modifier.height(100.dp))
-            
-            Column {
-               SmallHeadlines(
-                   text = stringResource(R.string.welcome_to)
-               )
-                Spacer(modifier = Modifier.height(1.dp))
-                Headlines(
-                    titleHeadlinesText = stringResource(R.string.app_name),
-                    smallHeadlinesText = stringResource(R.string.antuk_desc),
+
+            Spacer(modifier = Modifier.height(35.dp))
+
+
+            Box(
+                modifier = Modifier.fillMaxWidth(),
+                contentAlignment = Alignment.BottomCenter
+            ) {
+                Text(
+                    text = stringResource(R.string.password_changed),
+                    style = TextStyle(
+                        fontSize = 30.sp,
+                        fontFamily = FontFamily(Font(R.font.poppins_bold)),
+                        color = Color.Black
+                    ),
+                    textAlign = TextAlign.Center
                 )
             }
 
-            Spacer(modifier = Modifier.height(80.dp))
+            Spacer(modifier = Modifier.height(5.dp))
+            
+            Box(
+                modifier = Modifier.fillMaxWidth(),
+                contentAlignment = Alignment.BottomCenter
+            ) {
+                Text(
+                    text = stringResource(R.string.password_changed_desc),
+                    style = TextStyle(
+                        fontSize = 14.sp,
+                        fontFamily = FontFamily(Font(R.font.inter_regular)),
+                        color = Color.Black,
+                    ),
+                    textAlign = TextAlign.Center
+                )
+            }
 
+            Spacer(modifier = Modifier.height(25.dp))
             Column(
                 modifier = Modifier
-                    .fillMaxSize(),
-                verticalArrangement = Arrangement.spacedBy(15.dp)
+                    .fillMaxSize()
             ) {
-                SmallHeadlines(text = stringResource(R.string.get_started))
-                ButtonPrimary(text = stringResource(R.string.log_in), onClick = {})
-                ButtonSecondary(text = stringResource(R.string.create_account), onClick = {})
+                ButtonPrimary(text = stringResource(R.string.back_to_login), onClick = {})
             }
         }
     }
 }
 
-@Preview
+@Preview(showBackground = true, device = Devices.PIXEL_4)
 @Composable
-fun OnBoardingScreenPreview() {
+fun PasswordChangePreview() {
     AntukTheme {
-        OnBoardingScreen()
+        PasswordChanged()
     }
 }

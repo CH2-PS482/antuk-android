@@ -50,6 +50,33 @@ fun ButtonPrimary(
 }
 
 @Composable
+
+fun ButtonRed(
+    text: String,
+    modifier: Modifier = Modifier,
+    onClick: () -> Unit
+) {
+    Button(
+        onClick = onClick,
+        modifier = modifier
+            .fillMaxWidth()
+            .height(56.dp) ,
+        colors = ButtonDefaults.buttonColors(Color(0xFFDF3939)),
+        shape = RoundedCornerShape(size = 10.dp),
+
+        ) {
+        Text(
+            text = text,
+            style = TextStyle(
+                fontSize = 16.sp,
+                fontFamily = FontFamily(Font(R.font.inter_semibold)),
+                color = Color.White,
+            )
+        )
+    }
+}
+
+@Composable
 fun ButtonSecondary(
     text: String,
     modifier: Modifier = Modifier,

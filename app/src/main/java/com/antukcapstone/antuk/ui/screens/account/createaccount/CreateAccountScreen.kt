@@ -1,4 +1,4 @@
-package com.antukcapstone.antuk.ui.screens.account.login
+package com.antukcapstone.antuk.ui.screens.account.createaccount
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -34,7 +34,7 @@ import com.antukcapstone.antuk.ui.screens.account.components.PasswordTextField
 import com.antukcapstone.antuk.ui.theme.AntukTheme
 
 @Composable
-fun LoginScreen() {
+fun CreateAccountScreen() {
     Box(
         modifier = Modifier
             .fillMaxSize(),
@@ -46,12 +46,11 @@ fun LoginScreen() {
                 .background(Color.White)
                 .padding(28.dp)
         ) {
-            Column(
+           Column (
                 modifier = Modifier
                     .fillMaxSize()
                     .verticalScroll(rememberScrollState())
             ) {
-
                 Spacer(modifier = Modifier.height(10.dp))
 
                 Icon(
@@ -65,11 +64,19 @@ fun LoginScreen() {
                 Spacer(modifier = Modifier.height(15.dp))
 
                 Headlines(
-                    titleHeadlinesText = stringResource(R.string.log_in),
-                    smallHeadlinesText = stringResource(R.string.log_in_desc),
+                    titleHeadlinesText = stringResource(R.string.create_account),
+                    smallHeadlinesText = stringResource(R.string.create_account_desc),
                 )
 
                 Spacer(modifier = Modifier.height(35.dp))
+
+                InputTextField(
+                    label = stringResource(R.string.full_name),
+                    placeholder = stringResource(R.string.your_full_name),
+                    keyboardOptions = KeyboardOptions.Default
+                )
+
+                Spacer(modifier = Modifier.height(25.dp))
 
                 InputTextField(
                     label = stringResource(R.string.phone_number),
@@ -78,46 +85,39 @@ fun LoginScreen() {
                 )
 
                 Spacer(modifier = Modifier.height(25.dp))
-                
+
                 PasswordTextField(label = stringResource(R.string.password), placeholder = stringResource(
                     R.string.password_placeholder
                 ) )
 
-                Spacer(modifier = Modifier.height(15.dp))
+                Spacer(modifier = Modifier.height(25.dp))
 
-                Box(
-                    contentAlignment = Alignment.CenterEnd,
-                    modifier = Modifier.fillMaxWidth()
-                ) {
-                    ClickableText(
-                        text = "", hyperlink = stringResource(R.string.forgot_password), onClick = {},
-                    )
-                }
-
+                PasswordTextField(label = stringResource(R.string.confirm_password), placeholder = stringResource(
+                    R.string.confirm_password_placeholder
+                ) )
 
                 Spacer(modifier = Modifier.height(45.dp))
 
-                ButtonPrimary(text = stringResource(R.string.log_in), onClick = {})
+                ButtonPrimary(text = stringResource(R.string.create_account), onClick = {})
 
-                Spacer(modifier = Modifier.height(20.dp))
+                Spacer(modifier = Modifier.height(17.dp))
 
                 Box(
                     contentAlignment = Alignment.Center,
                     modifier = Modifier.fillMaxWidth()
                 ) {
-                    ClickableText(text = stringResource(R.string.dont_have_account), hyperlink = stringResource(R.string.create_account), onClick = {},
+                    ClickableText(text = stringResource(R.string.already_have_account), hyperlink = stringResource(R.string.log_in), onClick = {},
                     )
                 }
-
             }
         }
     }
 }
 
-@Preview(showBackground = true, device = Devices.PIXEL_2)
+@Preview(showBackground = true, device = Devices.PIXEL_4)
 @Composable
-fun LoginScreenPreview() {
+fun CreateAccountScreenPreview() {
     AntukTheme {
-        LoginScreen()
+        CreateAccountScreen()
     }
 }

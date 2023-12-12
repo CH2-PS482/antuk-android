@@ -1,4 +1,4 @@
-package com.antukcapstone.antuk.ui.screens.account.login
+package com.antukcapstone.antuk.ui.screens.account.profile
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -6,7 +6,6 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -26,21 +25,20 @@ import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.antukcapstone.antuk.R
-import com.antukcapstone.antuk.ui.components.ButtonPrimary
+import com.antukcapstone.antuk.ui.components.ButtonRed
 import com.antukcapstone.antuk.ui.components.Headlines
-import com.antukcapstone.antuk.ui.screens.account.components.ClickableText
 import com.antukcapstone.antuk.ui.screens.account.components.InputTextField
-import com.antukcapstone.antuk.ui.screens.account.components.PasswordTextField
+import com.antukcapstone.antuk.ui.screens.account.components.ButtonProfile
 import com.antukcapstone.antuk.ui.theme.AntukTheme
 
 @Composable
-fun LoginScreen() {
+fun ProfileScreen() {
     Box(
         modifier = Modifier
             .fillMaxSize(),
         contentAlignment = Alignment.Center
     ) {
-        Surface (
+        Surface(
             modifier = Modifier
                 .fillMaxSize()
                 .background(Color.White)
@@ -51,7 +49,6 @@ fun LoginScreen() {
                     .fillMaxSize()
                     .verticalScroll(rememberScrollState())
             ) {
-
                 Spacer(modifier = Modifier.height(10.dp))
 
                 Icon(
@@ -65,11 +62,19 @@ fun LoginScreen() {
                 Spacer(modifier = Modifier.height(15.dp))
 
                 Headlines(
-                    titleHeadlinesText = stringResource(R.string.log_in),
-                    smallHeadlinesText = stringResource(R.string.log_in_desc),
+                    titleHeadlinesText = stringResource(R.string.profile),
+                    smallHeadlinesText = stringResource(R.string.profile_desc),
                 )
 
                 Spacer(modifier = Modifier.height(35.dp))
+
+                InputTextField(
+                    label = stringResource(R.string.full_name),
+                    placeholder = stringResource(R.string.your_full_name),
+                    keyboardOptions = KeyboardOptions.Default
+                )
+
+                Spacer(modifier = Modifier.height(15.dp))
 
                 InputTextField(
                     label = stringResource(R.string.phone_number),
@@ -77,47 +82,33 @@ fun LoginScreen() {
                     keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
                 )
 
-                Spacer(modifier = Modifier.height(25.dp))
-                
-                PasswordTextField(label = stringResource(R.string.password), placeholder = stringResource(
-                    R.string.password_placeholder
-                ) )
+                Spacer(modifier = Modifier.height(21.dp))
 
-                Spacer(modifier = Modifier.height(15.dp))
+                ButtonProfile(text = stringResource(R.string.edit_profile), icon = painterResource(
+                    R.drawable.information
+                ), onClick = {})
 
-                Box(
-                    contentAlignment = Alignment.CenterEnd,
-                    modifier = Modifier.fillMaxWidth()
-                ) {
-                    ClickableText(
-                        text = "", hyperlink = stringResource(R.string.forgot_password), onClick = {},
-                    )
-                }
+                Spacer(modifier = Modifier.height(18.dp))
+
+                ButtonProfile(text = stringResource(R.string.reset_password), icon = painterResource(
+                    R.drawable.lock_password
+                ), onClick = {})
+
+                Spacer(modifier = Modifier.height(18.dp))
+
+                ButtonRed(text = stringResource(R.string.sign_out), onClick = {})
 
 
-                Spacer(modifier = Modifier.height(45.dp))
-
-                ButtonPrimary(text = stringResource(R.string.log_in), onClick = {})
-
-                Spacer(modifier = Modifier.height(20.dp))
-
-                Box(
-                    contentAlignment = Alignment.Center,
-                    modifier = Modifier.fillMaxWidth()
-                ) {
-                    ClickableText(text = stringResource(R.string.dont_have_account), hyperlink = stringResource(R.string.create_account), onClick = {},
-                    )
-                }
 
             }
         }
     }
 }
 
-@Preview(showBackground = true, device = Devices.PIXEL_2)
+@Preview(showBackground = true, device = Devices.PIXEL_4)
 @Composable
-fun LoginScreenPreview() {
+fun ProfileScreenPreview() {
     AntukTheme {
-        LoginScreen()
+        ProfileScreen()
     }
 }

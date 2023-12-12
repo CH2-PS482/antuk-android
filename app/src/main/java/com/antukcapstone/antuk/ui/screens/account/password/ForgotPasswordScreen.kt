@@ -1,4 +1,4 @@
-package com.antukcapstone.antuk.ui.screens.account.login
+package com.antukcapstone.antuk.ui.screens.account.password
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -30,11 +30,10 @@ import com.antukcapstone.antuk.ui.components.ButtonPrimary
 import com.antukcapstone.antuk.ui.components.Headlines
 import com.antukcapstone.antuk.ui.screens.account.components.ClickableText
 import com.antukcapstone.antuk.ui.screens.account.components.InputTextField
-import com.antukcapstone.antuk.ui.screens.account.components.PasswordTextField
 import com.antukcapstone.antuk.ui.theme.AntukTheme
 
 @Composable
-fun LoginScreen() {
+fun ForgotPasswordSceen() {
     Box(
         modifier = Modifier
             .fillMaxSize(),
@@ -51,7 +50,6 @@ fun LoginScreen() {
                     .fillMaxSize()
                     .verticalScroll(rememberScrollState())
             ) {
-
                 Spacer(modifier = Modifier.height(10.dp))
 
                 Icon(
@@ -65,8 +63,8 @@ fun LoginScreen() {
                 Spacer(modifier = Modifier.height(15.dp))
 
                 Headlines(
-                    titleHeadlinesText = stringResource(R.string.log_in),
-                    smallHeadlinesText = stringResource(R.string.log_in_desc),
+                    titleHeadlinesText = stringResource(R.string.forgot_password),
+                    smallHeadlinesText = stringResource(R.string.forgot_password_desc),
                 )
 
                 Spacer(modifier = Modifier.height(35.dp))
@@ -77,47 +75,28 @@ fun LoginScreen() {
                     keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
                 )
 
-                Spacer(modifier = Modifier.height(25.dp))
-                
-                PasswordTextField(label = stringResource(R.string.password), placeholder = stringResource(
-                    R.string.password_placeholder
-                ) )
+                Spacer(modifier = Modifier.height(26.dp))
 
-                Spacer(modifier = Modifier.height(15.dp))
+                ButtonPrimary(text = stringResource(R.string.send_code), onClick = {})
 
-                Box(
-                    contentAlignment = Alignment.CenterEnd,
-                    modifier = Modifier.fillMaxWidth()
-                ) {
-                    ClickableText(
-                        text = "", hyperlink = stringResource(R.string.forgot_password), onClick = {},
-                    )
-                }
-
-
-                Spacer(modifier = Modifier.height(45.dp))
-
-                ButtonPrimary(text = stringResource(R.string.log_in), onClick = {})
-
-                Spacer(modifier = Modifier.height(20.dp))
+                Spacer(modifier = Modifier.height(30.dp))
 
                 Box(
                     contentAlignment = Alignment.Center,
                     modifier = Modifier.fillMaxWidth()
                 ) {
-                    ClickableText(text = stringResource(R.string.dont_have_account), hyperlink = stringResource(R.string.create_account), onClick = {},
+                    ClickableText(text = stringResource(R.string.remember_password), hyperlink = stringResource(R.string.log_in), onClick = {},
                     )
                 }
-
             }
         }
     }
 }
 
-@Preview(showBackground = true, device = Devices.PIXEL_2)
+@Preview(showBackground = true, device = Devices.PIXEL_4)
 @Composable
-fun LoginScreenPreview() {
+fun ForgotPasswordScreenPreview() {
     AntukTheme {
-        LoginScreen()
+        ForgotPasswordSceen()
     }
 }

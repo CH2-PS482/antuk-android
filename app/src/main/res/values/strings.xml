@@ -9,14 +9,79 @@
     <!--Login Screen-->
     <string name="log_in">Log In</string>
     <string name="log_in_desc">Log In now to have full experience in <b>Antuk!</b></string>
+    <string name="dont_have_account">Don\'t Have any Account?</string>
+
+    <!--Form-->
     <string name="phone_number">Phone Number</string>
     <string name="phone_number_placeholder">Your Phone Number</string>
-    <string name="password">Password</string>
-    <string name="password_placeholder">Your Password</string>
-    <string name="show_password">Show Password</string>
-    <string name="hide_password">Hide Password</string>
-    <string name="forgot_password">Forgot Password</string>
+    <string name="sign_out">Sign Out</string>
 
     <!--Register Screen-->
     <string name="create_account">Create Account</string>
+    <string name="create_account_desc">Create account to access all the features of Antuk!</string>
+    <string name="already_have_account">Already have an account?</string>
+
+    <!--Home Screen-->
+    <string name="user">Hi, $name! 👋</string>
+    <string name="start_driving">Start Driving</string>
+    <string name="start_driving_desc">Drive safely with Antuk!</string>
+
+    <string name="guide">How To Use App</string>
+    <string name="guide_desc">Find out how to use Antuk!</string>
+    <string name="read_guide">Read Guide</string>
+
+    <!--Profile-->
+    <string name="profile">Profile</string>
+    <string name="profile_desc">Here’s your profile detail</string>
+    <string name="full_name">Full Name</string>
+    <string name="your_full_name">Your Full Name</string>
+    <string name="edit_profile">Edit Profile</string>
+    <string name="edit_profile_desc">Edit your profile here!</string>
+    <string name="save">Save</string>
+    
+    <!--Password-->
+    <string name="forgot_password">Forgot Password</string>
+    <string name="reset_password">Reset Password</string>
+    <string name="reset_password_desc">Type something that you can remember</string>
+    
+    <string name="new_password">New Password</string>
+    <string name="confirm_new_password">Confirm New Password</string>
+
+    <string name="password">Password</string>
+    <string name="password_placeholder">Input Password</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="confirm_password_placeholder">Repeat Password</string>
+    <string name="show_password">Show Password</string>
+    <string name="hide_password">Hide Password</string>
+
+    <string name="forgot_password_desc">Please your phone number that associated with your account.</string>
+    <string name="send_code">Send Code</string>
+    <string name="remember_password">Remember Password?</string>
+    <string name="password_changed">Password Changed!</string>
+    <string name="password_changed_desc">Your Password has been successfully changed</string>
+    <string name="back_to_login">Back to Login</string>
+
+    <!--Guide App-->
+    <string name="guide_app">Guide App</string>
+    <string name="guide_app_desc">Here\'s the guide to use Antuk!</string>
+    <string name="guide_step">
+        1. Letakkan Handphone pada phone holder mobil, arahkan kamera agar seluruh wajah terlihat
+        \n \n
+        2. Beri izin akses kamera
+        \n \n
+        3. Pada Halaman Home tekan tombol “MULAI MENGEMUDI”
+        \n \n
+        4. Ketika tanda-tanda mengantuk terdeteksi aplikasi akan memberikan notifikasi berupa bunyi dan getaran
+        \n \n
+        5. Ketika menerima notifikasi mengantuk segera berhenti di tempat aman dan istirahat.
+        \n \n
+        6. Setelah selesai berjalan tekan tombol “STOP”
+        \n \n
+        7. Periksa Riwayat perjalan anda dari Antuk pada menu “HISTORY”
+    </string>
+
+
+    <string name="history">History</string>
+    <string name="history_desc">History about journey you already did</string>
+
 </resources>
