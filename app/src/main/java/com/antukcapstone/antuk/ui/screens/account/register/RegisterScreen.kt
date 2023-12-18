@@ -1,4 +1,4 @@
-package com.antukcapstone.antuk.ui.screens.account.createaccount
+package com.antukcapstone.antuk.ui.screens.account.register
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -26,15 +26,18 @@ import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.antukcapstone.antuk.R
-import com.antukcapstone.antuk.ui.components.ButtonPrimary
-import com.antukcapstone.antuk.ui.components.Headlines
+import com.antukcapstone.antuk.ui.screens.components.ButtonPrimary
+import com.antukcapstone.antuk.ui.screens.components.Headlines
 import com.antukcapstone.antuk.ui.screens.account.components.ClickableText
 import com.antukcapstone.antuk.ui.screens.account.components.InputTextField
 import com.antukcapstone.antuk.ui.screens.account.components.PasswordTextField
 import com.antukcapstone.antuk.ui.theme.AntukTheme
 
 @Composable
-fun CreateAccountScreen() {
+fun RegisterScreen(
+    onRegister:() -> Unit,
+    toLogin:() -> Unit
+) {
     Box(
         modifier = Modifier
             .fillMaxSize(),
@@ -98,7 +101,12 @@ fun CreateAccountScreen() {
 
                 Spacer(modifier = Modifier.height(45.dp))
 
-                ButtonPrimary(text = stringResource(R.string.create_account), onClick = {})
+                ButtonPrimary(
+                    text = stringResource(R.string.create_account),
+                    onClick = {
+                       onRegister()
+                    }
+                )
 
                 Spacer(modifier = Modifier.height(17.dp))
 
@@ -106,7 +114,12 @@ fun CreateAccountScreen() {
                     contentAlignment = Alignment.Center,
                     modifier = Modifier.fillMaxWidth()
                 ) {
-                    ClickableText(text = stringResource(R.string.already_have_account), hyperlink = stringResource(R.string.log_in), onClick = {},
+                    ClickableText(
+                        text = stringResource(R.string.already_have_account),
+                        hyperlink = stringResource(R.string.log_in),
+                        onClick = {
+                           toLogin()
+                        },
                     )
                 }
             }
@@ -118,6 +131,6 @@ fun CreateAccountScreen() {
 @Composable
 fun CreateAccountScreenPreview() {
     AntukTheme {
-        CreateAccountScreen()
+
     }
 }

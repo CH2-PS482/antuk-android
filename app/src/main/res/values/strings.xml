@@ -59,7 +59,7 @@
     <string name="remember_password">Remember Password?</string>
     <string name="password_changed">Password Changed!</string>
     <string name="password_changed_desc">Your Password has been successfully changed</string>
-    <string name="back_to_login">Back to Login</string>
+    <string name="back_to_login">Back to Home</string>
 
     <!--Guide App-->
     <string name="guide_app">Guide App</string>
@@ -81,6 +81,7 @@
     </string>
 
 
+    <string name="home">Home</string>
     <string name="history">History</string>
     <string name="history_desc">History about journey you already did</string>
 

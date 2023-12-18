@@ -23,13 +23,15 @@ import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.antukcapstone.antuk.R
-import com.antukcapstone.antuk.ui.components.ButtonPrimary
-import com.antukcapstone.antuk.ui.components.Headlines
+import com.antukcapstone.antuk.ui.screens.components.ButtonPrimary
+import com.antukcapstone.antuk.ui.screens.components.Headlines
 import com.antukcapstone.antuk.ui.screens.account.components.PasswordTextField
 import com.antukcapstone.antuk.ui.theme.AntukTheme
 
 @Composable
-fun ResetPasswordScreen() {
+fun ResetPasswordScreen(
+    onReset:() -> Unit
+) {
     Box(
         modifier = Modifier
             .fillMaxSize(),
@@ -77,7 +79,9 @@ fun ResetPasswordScreen() {
 
                 Spacer(modifier = Modifier.height(30.dp))
 
-                ButtonPrimary(text = stringResource(R.string.reset_password), onClick = {})
+                ButtonPrimary(text = stringResource(R.string.reset_password), onClick = {
+                    onReset()
+                })
             }
         }
     }
@@ -87,6 +91,6 @@ fun ResetPasswordScreen() {
 @Composable
 fun ResetPasswordScreenPreview() {
     AntukTheme {
-        ResetPasswordScreen()
+//        ResetPasswordScreen()
     }
 }

@@ -42,7 +42,7 @@ fun ClickableText(
               textDecoration = TextDecoration.Underline
           ),
           modifier = Modifier.clickable {
-              onClick
+              onClick()
           }
       )
 

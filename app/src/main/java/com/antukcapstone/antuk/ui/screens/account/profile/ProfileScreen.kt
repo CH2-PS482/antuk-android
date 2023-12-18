@@ -25,14 +25,18 @@ import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.antukcapstone.antuk.R
-import com.antukcapstone.antuk.ui.components.ButtonRed
-import com.antukcapstone.antuk.ui.components.Headlines
+import com.antukcapstone.antuk.ui.screens.components.ButtonRed
+import com.antukcapstone.antuk.ui.screens.components.Headlines
 import com.antukcapstone.antuk.ui.screens.account.components.InputTextField
 import com.antukcapstone.antuk.ui.screens.account.components.ButtonProfile
 import com.antukcapstone.antuk.ui.theme.AntukTheme
 
 @Composable
-fun ProfileScreen() {
+fun ProfileScreen(
+    toEditProfile:() -> Unit,
+    toResetPassword:() -> Unit,
+    onSignOut: () -> Unit
+) {
     Box(
         modifier = Modifier
             .fillMaxSize(),
@@ -86,19 +90,23 @@ fun ProfileScreen() {
 
                 ButtonProfile(text = stringResource(R.string.edit_profile), icon = painterResource(
                     R.drawable.information
-                ), onClick = {})
+                ), onClick = {
+                    toEditProfile()
+                })
 
                 Spacer(modifier = Modifier.height(18.dp))
 
                 ButtonProfile(text = stringResource(R.string.reset_password), icon = painterResource(
                     R.drawable.lock_password
-                ), onClick = {})
+                ), onClick = {
+                    toResetPassword()
+                })
 
                 Spacer(modifier = Modifier.height(18.dp))
 
-                ButtonRed(text = stringResource(R.string.sign_out), onClick = {})
-
-
+                ButtonRed(text = stringResource(R.string.sign_out), onClick = {
+                    onSignOut()
+                })
 
             }
         }
@@ -109,6 +117,6 @@ fun ProfileScreen() {
 @Composable
 fun ProfileScreenPreview() {
     AntukTheme {
-        ProfileScreen()
+//        ProfileScreen(navController)
     }
 }

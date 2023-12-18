@@ -22,14 +22,17 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.antukcapstone.antuk.R
-import com.antukcapstone.antuk.ui.components.ButtonPrimary
-import com.antukcapstone.antuk.ui.components.ButtonSecondary
-import com.antukcapstone.antuk.ui.components.Headlines
-import com.antukcapstone.antuk.ui.components.SmallHeadlines
+import com.antukcapstone.antuk.ui.screens.components.ButtonPrimary
+import com.antukcapstone.antuk.ui.screens.components.ButtonSecondary
+import com.antukcapstone.antuk.ui.screens.components.Headlines
+import com.antukcapstone.antuk.ui.screens.components.SmallHeadlines
 import com.antukcapstone.antuk.ui.theme.AntukTheme
 
 @Composable
-fun OnBoardingScreen() {
+fun OnBoardingScreen(
+  toLogin:() -> Unit,
+  toRegister:() -> Unit
+) {
     Surface(
         modifier = Modifier
             .fillMaxSize()
@@ -48,7 +51,7 @@ fun OnBoardingScreen() {
                 horizontalArrangement = Arrangement.Center
             ) {
                 Image(
-                    painter = painterResource(R.drawable.hedgehog_sleep) ,
+                    painter = painterResource(R.drawable.antuk_logo) ,
                     contentDescription = "Hedgehog Graphic",
                     modifier = Modifier
                         .requiredSize(160.dp)
@@ -76,8 +79,12 @@ fun OnBoardingScreen() {
                 verticalArrangement = Arrangement.spacedBy(15.dp)
             ) {
                 SmallHeadlines(text = stringResource(R.string.get_started))
-                ButtonPrimary(text = stringResource(R.string.log_in), onClick = {})
-                ButtonSecondary(text = stringResource(R.string.create_account), onClick = {})
+                ButtonPrimary(text = stringResource(R.string.log_in), onClick = {
+                    toLogin()
+                })
+                ButtonSecondary(text = stringResource(R.string.create_account), onClick = {
+                    toRegister()
+                })
             }
         }
     }
@@ -87,6 +94,6 @@ fun OnBoardingScreen() {
 @Composable
 fun OnBoardingScreenPreview() {
     AntukTheme {
-        OnBoardingScreen()
+
     }
 }

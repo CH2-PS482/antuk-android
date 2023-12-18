@@ -33,7 +33,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.antukcapstone.antuk.R
-import com.antukcapstone.antuk.ui.components.Headlines
+import com.antukcapstone.antuk.ui.screens.components.Headlines
 import com.antukcapstone.antuk.ui.theme.AntukTheme
 
 @Composable

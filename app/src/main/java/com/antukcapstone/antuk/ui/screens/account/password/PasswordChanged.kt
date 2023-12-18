@@ -31,11 +31,13 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.antukcapstone.antuk.R
-import com.antukcapstone.antuk.ui.components.ButtonPrimary
+import com.antukcapstone.antuk.ui.screens.components.ButtonPrimary
 import com.antukcapstone.antuk.ui.theme.AntukTheme
 
 @Composable
-fun PasswordChanged() {
+fun PasswordChanged(
+    toHome:() -> Unit
+) {
     Surface(
         modifier = Modifier
             .fillMaxSize()
@@ -101,7 +103,9 @@ fun PasswordChanged() {
                 modifier = Modifier
                     .fillMaxSize()
             ) {
-                ButtonPrimary(text = stringResource(R.string.back_to_login), onClick = {})
+                ButtonPrimary(text = stringResource(R.string.back_to_login), onClick = {
+                    toHome()
+                })
             }
         }
     }
@@ -111,6 +115,6 @@ fun PasswordChanged() {
 @Composable
 fun PasswordChangePreview() {
     AntukTheme {
-        PasswordChanged()
+//        PasswordChanged()
     }
 }

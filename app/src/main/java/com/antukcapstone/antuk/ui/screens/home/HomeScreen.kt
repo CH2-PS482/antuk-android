@@ -29,13 +29,16 @@ import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.antukcapstone.antuk.R
-import com.antukcapstone.antuk.ui.components.TitleHeadlines
+import com.antukcapstone.antuk.ui.screens.components.TitleHeadlines
 import com.antukcapstone.antuk.ui.screens.home.components.CardButton
 import com.antukcapstone.antuk.ui.screens.home.components.CardHeadlines
 import com.antukcapstone.antuk.ui.theme.AntukTheme
 
 @Composable
-fun HomeScreen() {
+fun HomeScreen(
+    toRecognition:() -> Unit,
+    toGuide:() -> Unit
+) {
     Box(
         modifier = Modifier
             .fillMaxSize(),
@@ -92,7 +95,9 @@ fun HomeScreen() {
 
                             CardButton(textButton = stringResource(R.string.start_driving), iconButton = painterResource(
                                 R.drawable.play_circle
-                            ), onClick = {})
+                            ), onClick = {
+                                toRecognition()
+                            })
                         }
                     }
                 }
@@ -134,7 +139,9 @@ fun HomeScreen() {
 
                             CardButton(textButton = stringResource(R.string.read_guide), iconButton = painterResource(
                                 R.drawable.book_guide
-                            ), onClick = {})
+                            ), onClick = {
+                                toGuide()
+                            })
                         }
                     }
                 }
@@ -149,6 +156,6 @@ fun HomeScreen() {
 @Composable
 fun HomeScreenPreview() {
     AntukTheme {
-        HomeScreen()
+//        HomeScreen(navController)
     }
 }

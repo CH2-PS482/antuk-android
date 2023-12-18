@@ -1,4 +1,4 @@
-package com.antukcapstone.antuk.ui.components
+package com.antukcapstone.antuk.ui.screens.components
 
 
 import androidx.compose.foundation.layout.Box

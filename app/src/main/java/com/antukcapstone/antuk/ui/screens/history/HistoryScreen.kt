@@ -28,12 +28,13 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import com.antukcapstone.antuk.R
-import com.antukcapstone.antuk.ui.components.Headlines
+import com.antukcapstone.antuk.ui.screens.components.Headlines
 import com.antukcapstone.antuk.ui.theme.AntukTheme
 
 @Composable
-fun HistoryScreen() {
+fun HistoryScreen(navController: NavController) {
     Box(
         modifier = Modifier
             .fillMaxSize(),
@@ -91,6 +92,6 @@ fun HistoryScreen() {
 @Composable
 fun HistoryScreenPreview() {
     AntukTheme {
-        HistoryScreen()
+//        HistoryScreen(navController)
     }
 }
