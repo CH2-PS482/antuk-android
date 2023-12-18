@@ -35,7 +35,6 @@ import com.antukcapstone.antuk.ui.theme.AntukTheme
 fun ProfileScreen(
     toEditProfile:() -> Unit,
     toResetPassword:() -> Unit,
-    onSignOut: () -> Unit
 ) {
     Box(
         modifier = Modifier
@@ -104,10 +103,7 @@ fun ProfileScreen(
 
                 Spacer(modifier = Modifier.height(18.dp))
 
-                ButtonRed(text = stringResource(R.string.sign_out), onClick = {
-                    onSignOut()
-                })
-
+                ButtonRed(text = stringResource(R.string.sign_out), onClick = {})
             }
         }
     }

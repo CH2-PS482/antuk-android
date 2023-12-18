@@ -87,7 +87,6 @@ fun HistoryScreen(navController: NavController) {
         }
     }
 }
-
 @Preview(showBackground = true)
 @Composable
 fun HistoryScreenPreview() {
