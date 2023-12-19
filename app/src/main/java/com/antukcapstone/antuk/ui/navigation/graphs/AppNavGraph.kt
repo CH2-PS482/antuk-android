@@ -8,7 +8,7 @@ import com.antukcapstone.antuk.ui.navigation.Screens
 import com.antukcapstone.antuk.ui.screens.guidance.GuideAppScreen
 import com.antukcapstone.antuk.ui.screens.history.HistoryScreen
 import com.antukcapstone.antuk.ui.screens.home.HomeScreen
-import com.antukcapstone.antuk.ui.screens.recognition.RecognitionScreen
+
 
 @Composable
 fun AppNavGraph(navController: NavHostController) {
@@ -19,15 +19,13 @@ fun AppNavGraph(navController: NavHostController) {
     {
         composable(route = Screens.HomeScreenRoute.route) {
             HomeScreen(
-                toRecognition = {navController.navigate(Screens.RecognitionScreenRoute.route)},
+//                toRecognition = {navController.navigate(Screens.RecognitionScreenRoute.route)},
                 toGuide = {navController.navigate(Screens.GuideScreenRoute.route
                 )}
             )
         }
 
-        composable(route = Screens.RecognitionScreenRoute.route) {
-            RecognitionScreen()
-        }
+
 
         composable(route = Screens.GuideScreenRoute.route) {
             GuideAppScreen()

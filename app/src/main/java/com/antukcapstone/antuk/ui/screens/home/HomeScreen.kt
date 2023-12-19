@@ -1,5 +1,6 @@
 package com.antukcapstone.antuk.ui.screens.home
 
+import android.content.Intent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -23,6 +24,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Devices
@@ -32,13 +34,15 @@ import com.antukcapstone.antuk.R
 import com.antukcapstone.antuk.ui.screens.components.TitleHeadlines
 import com.antukcapstone.antuk.ui.screens.home.components.CardButton
 import com.antukcapstone.antuk.ui.screens.home.components.CardHeadlines
+import com.antukcapstone.antuk.ui.screens.recognition.CameraActivity
 import com.antukcapstone.antuk.ui.theme.AntukTheme
 
 @Composable
 fun HomeScreen(
-    toRecognition:() -> Unit,
     toGuide:() -> Unit
 ) {
+    val context = LocalContext.current
+
     Box(
         modifier = Modifier
             .fillMaxSize(),
@@ -96,7 +100,8 @@ fun HomeScreen(
                             CardButton(textButton = stringResource(R.string.start_driving), iconButton = painterResource(
                                 R.drawable.play_circle
                             ), onClick = {
-                                toRecognition()
+                                val intent = Intent(context, CameraActivity::class.java)
+                                context.startActivity(intent)
                             })
                         }
                     }

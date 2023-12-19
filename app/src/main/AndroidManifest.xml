@@ -30,6 +30,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+<!--        <activity android:name=".ui.screens.recognition.RecognitionActivity">-->
+<!--        </activity>-->
+
+        <activity
+            android:name=".ui.screens.recognition.CameraActivity"
+            android:theme="@style/Theme.Antuk"
+            >
+        </activity>
     </application>
 
 </manifest>
