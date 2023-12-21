@@ -1,5 +1,6 @@
 package com.antukcapstone.antuk.ui.screens.account.password
 
+import android.content.Context
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
@@ -14,15 +15,24 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.livedata.observeAsState
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.antukcapstone.antuk.R
+import com.antukcapstone.antuk.core.di.Injection
+import com.antukcapstone.antuk.core.helper.ViewModelFactory
 import com.antukcapstone.antuk.ui.screens.components.ButtonPrimary
 import com.antukcapstone.antuk.ui.screens.components.Headlines
 import com.antukcapstone.antuk.ui.screens.account.components.PasswordTextField
@@ -30,8 +40,25 @@ import com.antukcapstone.antuk.ui.theme.AntukTheme
 
 @Composable
 fun ResetPasswordScreen(
-    onReset:() -> Unit
+    onReset:() -> Unit,
+    context: Context = LocalContext.current,
+    viewModel: ResetPasswordViewModel = viewModel(
+        factory = ViewModelFactory(Injection.provideAntukRepository(context))
+    )
 ) {
+
+    val context: Context = LocalContext.current
+
+    var password by rememberSaveable {
+        mutableStateOf("")
+    }
+
+    var confirmPassword by rememberSaveable {
+        mutableStateOf("")
+    }
+
+    val sendState by viewModel.send.observeAsState()
+
     Box(
         modifier = Modifier
             .fillMaxSize(),
@@ -67,19 +94,30 @@ fun ResetPasswordScreen(
 
                 Spacer(modifier = Modifier.height(35.dp))
 
-                PasswordTextField(label = stringResource(R.string.new_password), placeholder = stringResource(
+                PasswordTextField(
+                    value = viewModel.password,
+                    onValueChange = {input ->
+                        viewModel.password = input
+                    },
+                    label = stringResource(R.string.new_password), placeholder = stringResource(
                     R.string.password_placeholder
                 ) )
 
                 Spacer(modifier = Modifier.height(15.dp))
 
-                PasswordTextField(label = stringResource(R.string.confirm_password), placeholder = stringResource(
+                PasswordTextField(
+                    value = viewModel.confirmPassword,
+                    onValueChange = {input ->
+                        viewModel.confirmPassword = input
+                    },
+                    label = stringResource(R.string.confirm_password), placeholder = stringResource(
                     R.string.confirm_password_placeholder
                 ) )
 
                 Spacer(modifier = Modifier.height(30.dp))
 
                 ButtonPrimary(text = stringResource(R.string.reset_password), onClick = {
+                    viewModel.sendResetPasswordData(password, confirmPassword)
                     onReset()
                 })
             }

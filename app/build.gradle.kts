@@ -65,11 +65,17 @@ dependencies {
     // Retrofit
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
     implementation("com.squareup.retrofit2:converter-gson:2.9.0")
+    implementation ("com.squareup.okhttp3:okhttp:4.12.0")
     implementation("com.squareup.okhttp3:logging-interceptor:4.12.0")
 
     // Activity & Lifecycle
+    implementation ("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.2")
+    implementation ("androidx.lifecycle:lifecycle-livedata-ktx:2.6.2")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.2")
     implementation("androidx.activity:activity-compose:1.8.2")
+
+    implementation ("androidx.compose.runtime:runtime-livedata:1.5.4")
+
 
     // Compose UI
     implementation(platform("androidx.compose:compose-bom:2023.10.01"))
@@ -100,7 +106,6 @@ dependencies {
     // Coil
     implementation("io.coil-kt:coil:2.5.0")
 
-
     // Data Store
     implementation("androidx.datastore:datastore-preferences:1.0.0")
 
@@ -110,7 +115,6 @@ dependencies {
 //    implementation ("androidx.paging:paging-runtime-ktx:3.2.1")
     implementation ("androidx.room:room-paging:2.6.1")
 
-
     // Coroutines
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
 
@@ -119,10 +123,6 @@ dependencies {
     implementation("org.tensorflow:tensorflow-lite-metadata:0.1.0")
 //    implementation("org.tensorflow:tensorflow-lite-gpu:2.4.0")
     implementation("org.tensorflow:tensorflow-lite-task-vision:0.4.4")
-
-    // Accompanist Pager
-
-    // DataStore ( For Onboarding Screen )
 
     // Android Testing
     testImplementation("junit:junit:4.13.2")

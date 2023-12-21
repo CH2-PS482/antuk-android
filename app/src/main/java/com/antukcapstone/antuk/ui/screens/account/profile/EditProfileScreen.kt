@@ -16,9 +16,12 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.KeyboardType
@@ -26,7 +29,10 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.antukcapstone.antuk.R
+import com.antukcapstone.antuk.core.di.Injection
+import com.antukcapstone.antuk.core.helper.ViewModelFactory
 import com.antukcapstone.antuk.ui.screens.components.ButtonPrimary
 import com.antukcapstone.antuk.ui.screens.components.Headlines
 import com.antukcapstone.antuk.ui.screens.account.components.InputTextField
@@ -35,8 +41,15 @@ import com.antukcapstone.antuk.ui.theme.AntukTheme
 
 @Composable
 fun EditProfileScreen(
+    viewModel: EditProfileViewModel = viewModel(factory = ViewModelFactory(
+        Injection.provideAntukRepository(
+        LocalContext.current))
+    ),
     onSave:() -> Unit
 ) {
+    val context = LocalContext.current
+    val sessionData by viewModel.getLoggedInUser().observeAsState()
+
     Box(
         modifier = Modifier
             .fillMaxSize(),
@@ -72,20 +85,34 @@ fun EditProfileScreen(
 
                 Spacer(modifier = Modifier.height(35.dp))
 
-                InputTextField(
-                    label = stringResource(R.string.full_name),
-                    placeholder = stringResource(R.string.your_full_name),
-                    keyboardOptions = KeyboardOptions.Default
-                )
+                sessionData?.let {
+                    InputTextField(
+                        value = it.fullName,
+                        onValueChange = {input ->
+                            viewModel.fullName = input
+                        },
+                        label = stringResource(R.string.full_name),
+                        placeholder = stringResource(R.string.your_full_name),
+                        keyboardOptions = KeyboardOptions.Default
+                    )
+                }
+
 
                 Spacer(modifier = Modifier.height(15.dp))
 
 
-                InputTextField(
-                    label = stringResource(R.string.phone_number),
-                    placeholder = stringResource(R.string.phone_number_placeholder),
-                    keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
-                )
+                sessionData?.let {
+                    InputTextField(
+                        value = it.phoneNumber,
+                        onValueChange = {input ->
+                            viewModel.phoneNumber = input
+                        },
+                        label = stringResource(R.string.phone_number),
+                        placeholder = stringResource(R.string.phone_number_placeholder),
+                        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
+                    )
+
+                }
 
                 Spacer(modifier = Modifier.height(21.dp))
 

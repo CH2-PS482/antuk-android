@@ -20,6 +20,8 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -30,7 +32,11 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.antukcapstone.antuk.R
+import com.antukcapstone.antuk.core.di.Injection
+import com.antukcapstone.antuk.core.helper.ViewModelFactory
+import com.antukcapstone.antuk.ui.screens.account.profile.ProfileViewModel
 import com.antukcapstone.antuk.ui.screens.components.TitleHeadlines
 import com.antukcapstone.antuk.ui.screens.home.components.CardButton
 import com.antukcapstone.antuk.ui.screens.home.components.CardHeadlines
@@ -39,10 +45,14 @@ import com.antukcapstone.antuk.ui.theme.AntukTheme
 
 @Composable
 fun HomeScreen(
+    viewModel: ProfileViewModel = viewModel(factory = ViewModelFactory(
+        Injection.provideAntukRepository(
+        LocalContext.current))
+    ),
     toGuide:() -> Unit
 ) {
     val context = LocalContext.current
-
+    val sessionData by viewModel.getLoggedInUser().observeAsState()
     Box(
         modifier = Modifier
             .fillMaxSize(),
@@ -59,8 +69,11 @@ fun HomeScreen(
                     .fillMaxSize()
                     .verticalScroll(rememberScrollState())
             ) {
-                TitleHeadlines(
-                    text = stringResource(R.string.user))
+                sessionData?.let {
+                    TitleHeadlines(
+                        text = "Hi, ${it.fullName} 👋")
+                }
+
 
                 Spacer(modifier = Modifier.height(23.dp))
 

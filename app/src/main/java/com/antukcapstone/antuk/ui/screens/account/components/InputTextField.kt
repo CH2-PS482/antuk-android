@@ -19,9 +19,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.antukcapstone.antuk.ui.theme.AntukTheme
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.Font
@@ -36,14 +34,13 @@ import com.antukcapstone.antuk.ui.theme.LightGrey
 
 @Composable
 fun InputTextField(
+    value: String ,
+    onValueChange:(String) -> Unit,
     label: String,
     placeholder: String,
     keyboardOptions: KeyboardOptions
-) {
-    val textValue = remember {
-        mutableStateOf("")
-    }
 
+) {
     Column(
         modifier = Modifier,
         verticalArrangement = Arrangement.spacedBy(2.dp)
@@ -71,23 +68,21 @@ fun InputTextField(
                 unfocusedBorderColor = LightGrey,
             ),
             keyboardOptions = keyboardOptions,
-            value = textValue.value,
+            value = value,
             singleLine = true,
-            onValueChange = {
-                textValue.value = it
-            },
+            maxLines = 1,
+            onValueChange = { onValueChange( it) },
         )
     }
 }
 
 @Composable
 fun PasswordTextField(
+    value: String,
+    onValueChange: (String) -> Unit,
     label: String,
     placeholder: String
 ) {
-    val password = remember {
-        mutableStateOf("")
-    }
 
     val passwordVisible = remember {
         mutableStateOf(false)
@@ -118,11 +113,12 @@ fun PasswordTextField(
                 focusedBorderColor = LightGrey,
                 unfocusedBorderColor = LightGrey,
             ),
-            value = password.value,
+            value = value,
             singleLine = true,
+            maxLines = 1,
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
             onValueChange = {
-                password.value = it
+              onValueChange(it)
             },
             trailingIcon = {
                 val icomImage = if (passwordVisible.value)
@@ -143,19 +139,5 @@ fun PasswordTextField(
 
 }
 
-@Preview(showBackground = true)
-@Composable
-fun InputFormPreview() {
-    AntukTheme {
-        InputTextField(label = "Label Form" , placeholder = "Your Value", keyboardOptions = KeyboardOptions.Default )
-    }
-}
 
-@Preview(showBackground = true)
-@Composable
-fun PasswordTextFieldPreview() {
-    AntukTheme {
-        PasswordTextField(label = "Password", placeholder = "Your Password")
-    }
-}
 
