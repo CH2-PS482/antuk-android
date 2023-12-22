@@ -14,7 +14,6 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.requiredHeight
 import androidx.compose.foundation.layout.requiredWidth
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
@@ -38,8 +37,8 @@ import com.antukcapstone.antuk.core.di.Injection
 import com.antukcapstone.antuk.core.helper.ViewModelFactory
 import com.antukcapstone.antuk.ui.screens.account.profile.ProfileViewModel
 import com.antukcapstone.antuk.ui.screens.components.TitleHeadlines
-import com.antukcapstone.antuk.ui.screens.home.components.CardButton
-import com.antukcapstone.antuk.ui.screens.home.components.CardHeadlines
+import com.antukcapstone.antuk.ui.screens.components.CardButton
+import com.antukcapstone.antuk.ui.screens.components.CardHeadlines
 import com.antukcapstone.antuk.ui.screens.recognition.CameraActivity
 import com.antukcapstone.antuk.ui.theme.AntukTheme
 
@@ -79,7 +78,7 @@ fun HomeScreen(
 
                 Box(
                     modifier = Modifier
-                        .width(320.dp)
+                        .fillMaxWidth()
                         .height(270.dp)
                         .clip(RoundedCornerShape(15.dp))
                         .background(color = Color.Black)
@@ -124,7 +123,7 @@ fun HomeScreen(
 
                 Box(
                     modifier = Modifier
-                        .width(320.dp)
+                        .fillMaxWidth()
                         .height(270.dp)
                         .clip(RoundedCornerShape(15.dp))
                         .background(color = Color.Black)
